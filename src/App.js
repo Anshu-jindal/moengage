@@ -1,24 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import "./App.css";
+import SearchPage from "./Components/SearchedPage/SearchPage";
+import {
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+import Single from "./Components/Single/Single";
+import NotFound from "./Components/NotFound";
 
 function App() {
+  const [loggedIn, setLoggedIn] = useState(false);
+  let cnt = 1;
+  let url =
+    "https://api.aniapi.com/v1/oauth?response_type=token&client_id=38dbd79d-25ed-481a-928a-cc2821e93876&redirect_uri=http://localhost:3000/&state=cdnvkjfkjvnjfnvnj";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <NotFound />
+        </Route>
+        <Route path="/search" exact>
+          <SearchPage />
+        </Route>
+        <Route path="/:slug" exact component={Single} />
+      </Switch>
+    </Router>
   );
 }
 

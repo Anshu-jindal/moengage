@@ -1,0 +1,22 @@
+.search-input {
+  padding: 8px;
+  border: none;
+  /* background-color: #4142af; */
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.header {
+  background-color: #4142af;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  padding: 24px 20%;
+  margin: 0 auto;
+}
+
+.search-page-div {
+  background-color: #8989d3;
+}
