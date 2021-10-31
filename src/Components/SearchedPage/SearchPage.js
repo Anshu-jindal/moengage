@@ -9,7 +9,9 @@ export default function SearchPage() {
 
   var url = window.location.href;
   let access_token =
-    url.length < 30 ? "" : url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
+    url.length < 30
+      ? localStorage.getItem("access_token")
+      : url.match(/\#(?:access_token)\=([\S\s]*?)\&/)[1];
 
   localStorage.setItem("access_token", access_token);
 

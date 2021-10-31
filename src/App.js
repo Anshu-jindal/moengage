@@ -1,6 +1,11 @@
 import "./App.css";
 import SearchPage from "./Components/SearchedPage/SearchPage";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import {
+  Redirect,
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
 import Single from "./Components/Single/Single";
 import NotFound from "./Components/NotFound";
 
@@ -9,7 +14,11 @@ function App() {
     <Router>
       <Switch>
         <Route path="/" exact>
-          <NotFound />
+          {localStorage.getItem("access_token") ? (
+            <Redirect to="/search" />
+          ) : (
+            <NotFound />
+          )}
         </Route>
         <Route path="/search" exact>
           <SearchPage />
